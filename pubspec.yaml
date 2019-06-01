@@ -1,14 +1,16 @@
 name: route_guide_google_example
-description: A sample command-line application.
-# version: 1.0.0
+description: Dart gRPC sample client and server.
+version: 1.0.0
 # homepage: https://www.example.com
-# author: Your Name <email@example.com>
+author: andreyka ruan65@gmail.com
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
 
-#dependencies:
-#  path: ^1.4.1
+dependencies:
+  async: '>=1.13.3 <3.0.0'
+  grpc: ^1.0.2
+  protobuf: ^0.10.1
 
 dev_dependencies:
   pedantic: ^1.0.0

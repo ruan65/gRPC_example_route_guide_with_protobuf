@@ -22,7 +22,10 @@ class Client {
     options: CallOptions(timeout: Duration(seconds: 30)));
 
     try {
+      print('Running getFeture on the server');
       await runGetFeature();
+      print("Running listFeatures server stream");
+      await runListFeatures();
     } catch (exception) {
       print('Caught error: $exception');
     }
@@ -36,7 +39,7 @@ class Client {
         ? 'no feature'
         : 'feature called "${feature.name}"';
     print(
-        'Found $name at ${latitude / coordFactor}, ${longitude / coordFactor}');
+        'Found!!!: $name at ${latitude / coordFactor}, ${longitude / coordFactor}');
   }
 
   Future<void> runGetFeature() async {
@@ -49,5 +52,23 @@ class Client {
 
     printFeature(await stub.getFeature(point1));
     printFeature(await stub.getFeature(point2));
+  }
+
+  Future<void> runListFeatures() async {
+    final lo = new Point()
+      ..latitude = 400000000
+      ..longitude = -750000000;
+    final hi = new Point()
+      ..latitude = 420000000
+      ..longitude = -730000000;
+    final rect = new Rectangle()
+      ..lo = lo
+      ..hi = hi;
+
+    print('Looking for features between 40, -75 and 42, -73');
+
+    await for(var feature in stub.listFeatures(rect)) {
+      printFeature(feature);
+    }
   }
 }

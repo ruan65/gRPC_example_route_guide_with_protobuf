@@ -4,6 +4,8 @@ package routeguide;
 
 service RouteGuide {
     rpc GetFeature(Point) returns(Feature) {}
+
+    rpc ListFeatures(Rectangle) returns (stream Feature) {}
 }
 
 message Point {
@@ -15,4 +17,9 @@ message Feature {
     string name = 1;
 
     Point location = 2;
+}
+
+message Rectangle {
+    Point lo = 1;
+    Point hi = 2;
 }

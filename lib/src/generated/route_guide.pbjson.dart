@@ -20,3 +20,11 @@ const Feature$json = const {
   ],
 };
 
+const Rectangle$json = const {
+  '1': 'Rectangle',
+  '2': const [
+    const {'1': 'lo', '3': 1, '4': 1, '5': 11, '6': '.routeguide.Point', '10': 'lo'},
+    const {'1': 'hi', '3': 2, '4': 1, '5': 11, '6': '.routeguide.Point', '10': 'hi'},
+  ],
+};
+

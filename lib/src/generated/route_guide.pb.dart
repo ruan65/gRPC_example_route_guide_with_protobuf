@@ -36,11 +36,6 @@ class Point extends $pb.GeneratedMessage {
   set longitude($core.int v) { $_setSignedInt32(1, v); }
   $core.bool hasLongitude() => $_has(1);
   void clearLongitude() => clearField(2);
-
-  $core.String toString() {
-    // TODO: implement toString
-    return "Point: lat=$latitude lon=$longitude";
-  }
 }
 
 class Feature extends $pb.GeneratedMessage {
@@ -71,5 +66,39 @@ class Feature extends $pb.GeneratedMessage {
   set location(Point v) { setField(2, v); }
   $core.bool hasLocation() => $_has(1);
   void clearLocation() => clearField(2);
+}
+
+class Rectangle extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Rectangle', package: const $pb.PackageName('routeguide'))
+    ..a<Point>(1, 'lo', $pb.PbFieldType.OM, Point.getDefault, Point.create)
+    ..a<Point>(2, 'hi', $pb.PbFieldType.OM, Point.getDefault, Point.create)
+    ..hasRequiredFields = false
+  ;
+
+  Rectangle() : super();
+  Rectangle.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
+  Rectangle.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
+  Rectangle clone() => Rectangle()..mergeFromMessage(this);
+  Rectangle copyWith(void Function(Rectangle) updates) => super.copyWith((message) => updates(message as Rectangle));
+  $pb.BuilderInfo get info_ => _i;
+  static Rectangle create() => Rectangle();
+  Rectangle createEmptyInstance() => create();
+  static $pb.PbList<Rectangle> createRepeated() => $pb.PbList<Rectangle>();
+  static Rectangle getDefault() => _defaultInstance ??= create()..freeze();
+  static Rectangle _defaultInstance;
+
+  Point get lo => $_getN(0);
+  set lo(Point v) { setField(1, v); }
+  $core.bool hasLo() => $_has(0);
+  void clearLo() => clearField(1);
+
+  Point get hi => $_getN(1);
+  set hi(Point v) { setField(2, v); }
+  $core.bool hasHi() => $_has(1);
+  void clearHi() => clearField(2);
+
+  $core.String toString() {
+    return "Coordinates fence for getting features: lo=$lo hi=$hi";
+  }
 }
 

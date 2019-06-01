@@ -1,4 +1,1 @@
-A sample command-line application.
-
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+protoc --proto_path=protos/ protos/route_guide.proto --dart_out=grpc:lib/src/generated/

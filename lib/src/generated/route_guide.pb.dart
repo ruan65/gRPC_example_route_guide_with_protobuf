@@ -36,6 +36,11 @@ class Point extends $pb.GeneratedMessage {
   set longitude($core.int v) { $_setSignedInt32(1, v); }
   $core.bool hasLongitude() => $_has(1);
   void clearLongitude() => clearField(2);
+
+  $core.String toString() {
+    // TODO: implement toString
+    return "Point: lat=$latitude lon=$longitude";
+  }
 }
 
 class Feature extends $pb.GeneratedMessage {

@@ -13,6 +13,9 @@ class RouteGuideService extends RouteGuideServiceBase {
 
   @override
   Future<Feature> getFeature(grpc.ServiceCall call, Point request) async {
+
+    print('Got point request: ${request.toString()}');
+
     return featuresDb.firstWhere((f) => f.location == request,
         orElse: () => new Feature()..location = request);
   }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c98a2571-6c8a-4b59-a6f9-ff34b5d48625" name="Default Changelist" comment="" />
+    <list default="true" id="c98a2571-6c8a-4b59-a6f9-ff34b5d48625" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/server.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/server.dart" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+            <state relative-caret-position="381">
+              <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
               <folding>
                 <element signature="e#0#3062#0" expanded="true" />
               </folding>
@@ -25,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/server.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="374">
+              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -76,7 +79,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/client.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -138,10 +141,11 @@
         <option value="$PROJECT_DIR$/lib/src/common.dart" />
         <option value="$PROJECT_DIR$/data/route_guide_db.json" />
         <option value="$PROJECT_DIR$/bin/main.dart" />
-        <option value="$PROJECT_DIR$/lib/src/server.dart" />
         <option value="$PROJECT_DIR$/bin/server.dart" />
         <option value="$PROJECT_DIR$/bin/client.dart" />
         <option value="$PROJECT_DIR$/lib/src/client.dart" />
+        <option value="$PROJECT_DIR$/lib/src/server.dart" />
+        <option value="$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart" />
       </list>
     </option>
   </component>
@@ -266,12 +270,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1559405297566</updated>
-      <workItem from="1559405298809" duration="5025000" />
+      <workItem from="1559405298809" duration="5305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5025000" />
+    <option name="totallyTimeSpent" value="5305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
@@ -282,7 +286,7 @@
       <window_info id="Capture Tool" />
       <window_info id="UI Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3110749" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3110749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Dart Analysis" weight="0.32911393" />
       <window_info anchor="bottom" id="Terminal" weight="0.32911393" />
@@ -363,26 +367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#3062#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/server.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/server.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -424,6 +408,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/server.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/generated/route_guide.pb.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#3062#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

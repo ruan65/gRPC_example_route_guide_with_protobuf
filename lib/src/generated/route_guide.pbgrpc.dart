@@ -22,6 +22,10 @@ class RouteGuideClient extends $grpc.Client {
       '/routeguide.RouteGuide/ListFeatures',
       (Rectangle value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => Feature.fromBuffer(value));
+  static final _$recordRoute = $grpc.ClientMethod<Point, RouteSummary>(
+      '/routeguide.RouteGuide/RecordRoute',
+      (Point value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => RouteSummary.fromBuffer(value));
 
   RouteGuideClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -40,6 +44,12 @@ class RouteGuideClient extends $grpc.Client {
         _$listFeatures, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseStream(call);
+  }
+
+  $grpc.ResponseFuture<RouteSummary> recordRoute($async.Stream<Point> request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$recordRoute, request, options: options);
+    return $grpc.ResponseFuture(call);
   }
 }
 
@@ -61,6 +71,13 @@ abstract class RouteGuideServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => Rectangle.fromBuffer(value),
         (Feature value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<Point, RouteSummary>(
+        'RecordRoute',
+        recordRoute,
+        true,
+        false,
+        ($core.List<$core.int> value) => Point.fromBuffer(value),
+        (RouteSummary value) => value.writeToBuffer()));
   }
 
   $async.Future<Feature> getFeature_Pre(
@@ -76,4 +93,6 @@ abstract class RouteGuideServiceBase extends $grpc.Service {
   $async.Future<Feature> getFeature($grpc.ServiceCall call, Point request);
   $async.Stream<Feature> listFeatures(
       $grpc.ServiceCall call, Rectangle request);
+  $async.Future<RouteSummary> recordRoute(
+      $grpc.ServiceCall call, $async.Stream<Point> request);
 }

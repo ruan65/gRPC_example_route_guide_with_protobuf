@@ -28,3 +28,13 @@ const Rectangle$json = const {
   ],
 };
 
+const RouteSummary$json = const {
+  '1': 'RouteSummary',
+  '2': const [
+    const {'1': 'point_count', '3': 1, '4': 1, '5': 5, '10': 'pointCount'},
+    const {'1': 'feature_count', '3': 2, '4': 1, '5': 5, '10': 'featureCount'},
+    const {'1': 'distance', '3': 3, '4': 1, '5': 5, '10': 'distance'},
+    const {'1': 'elapsed_time', '3': 4, '4': 1, '5': 5, '10': 'elapsedTime'},
+  ],
+};
+

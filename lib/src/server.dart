@@ -20,7 +20,6 @@ class RouteGuideService extends RouteGuideServiceBase {
   @override
   Stream<Feature> listFeatures(
       grpc.ServiceCall call, Rectangle request) async* {
-
     print("Server got request for streaming features: $request");
 
     final normalizedRectangle = _normalize(request);
@@ -30,7 +29,7 @@ class RouteGuideService extends RouteGuideServiceBase {
         continue;
       }
       final location = feature.location;
-      if(_contains(normalizedRectangle, location)) {
+      if (_contains(normalizedRectangle, location)) {
         await Future.delayed(Duration(milliseconds: 200));
         print("yielding to the stream: ${feature.name}");
         yield feature;
@@ -57,6 +56,65 @@ class RouteGuideService extends RouteGuideServiceBase {
       p.longitude <= r.hi.longitude &&
       p.latitude >= r.lo.latitude &&
       p.latitude <= r.hi.latitude;
+
+  @override
+  Future<RouteSummary> recordRoute(
+      grpc.ServiceCall call, Stream<Point> request) async {
+    int pointCount = 0;
+    int featureCount = 0;
+    double distance = 0.0;
+    Point previous;
+    final timer = Stopwatch();
+
+    await for (var location in request) {
+      if (!timer.isRunning) {
+        timer.start();
+      }
+      pointCount++;
+      final feature = featuresDb.firstWhere((f) => f.location == location,
+          orElse: () => null);
+
+      if (feature != null) {
+        featureCount++;
+      }
+
+      if (previous != null) {
+        distance += _distance(previous, location);
+      }
+      previous = location;
+    }
+    timer.stop();
+
+    return RouteSummary()
+      ..pointCount = pointCount
+      ..featureCount = featureCount
+      ..distance = distance.round()
+      ..elapsedTime = timer.elapsed.inSeconds;
+  }
+}
+
+/// Calculate the distance between two points using the "haversine" formula.
+/// This code was taken from http://www.movable-type.co.uk/scripts/latlong.html.
+double _distance(Point start, Point end) {
+  double toRadians(double num) {
+    return num * pi / 180;
+  }
+
+  final lat1 = start.latitude / coordFactor;
+  final lat2 = end.latitude / coordFactor;
+  final lon1 = start.longitude / coordFactor;
+  final lon2 = end.longitude / coordFactor;
+  final R = 6371000; // metres
+  final phi1 = toRadians(lat1);
+  final phi2 = toRadians(lat2);
+  final dLat = toRadians(lat2 - lat1);
+  final dLon = toRadians(lon2 - lon1);
+
+  final a = sin(dLat / 2) * sin(dLat / 2) +
+      cos(phi1) * cos(phi2) * sin(dLon / 2) * sin(dLon / 2);
+  final c = 2 * atan2(sqrt(a), sqrt(1 - a));
+
+  return R * c;
 }
 
 class Server {

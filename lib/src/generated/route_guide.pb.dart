@@ -96,9 +96,47 @@ class Rectangle extends $pb.GeneratedMessage {
   set hi(Point v) { setField(2, v); }
   $core.bool hasHi() => $_has(1);
   void clearHi() => clearField(2);
+}
 
-  $core.String toString() {
-    return "Coordinates fence for getting features: lo=$lo hi=$hi";
-  }
+class RouteSummary extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('RouteSummary', package: const $pb.PackageName('routeguide'))
+    ..a<$core.int>(1, 'pointCount', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, 'featureCount', $pb.PbFieldType.O3)
+    ..a<$core.int>(3, 'distance', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, 'elapsedTime', $pb.PbFieldType.O3)
+    ..hasRequiredFields = false
+  ;
+
+  RouteSummary() : super();
+  RouteSummary.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
+  RouteSummary.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
+  RouteSummary clone() => RouteSummary()..mergeFromMessage(this);
+  RouteSummary copyWith(void Function(RouteSummary) updates) => super.copyWith((message) => updates(message as RouteSummary));
+  $pb.BuilderInfo get info_ => _i;
+  static RouteSummary create() => RouteSummary();
+  RouteSummary createEmptyInstance() => create();
+  static $pb.PbList<RouteSummary> createRepeated() => $pb.PbList<RouteSummary>();
+  static RouteSummary getDefault() => _defaultInstance ??= create()..freeze();
+  static RouteSummary _defaultInstance;
+
+  $core.int get pointCount => $_get(0, 0);
+  set pointCount($core.int v) { $_setSignedInt32(0, v); }
+  $core.bool hasPointCount() => $_has(0);
+  void clearPointCount() => clearField(1);
+
+  $core.int get featureCount => $_get(1, 0);
+  set featureCount($core.int v) { $_setSignedInt32(1, v); }
+  $core.bool hasFeatureCount() => $_has(1);
+  void clearFeatureCount() => clearField(2);
+
+  $core.int get distance => $_get(2, 0);
+  set distance($core.int v) { $_setSignedInt32(2, v); }
+  $core.bool hasDistance() => $_has(2);
+  void clearDistance() => clearField(3);
+
+  $core.int get elapsedTime => $_get(3, 0);
+  set elapsedTime($core.int v) { $_setSignedInt32(3, v); }
+  $core.bool hasElapsedTime() => $_has(3);
+  void clearElapsedTime() => clearField(4);
 }
 

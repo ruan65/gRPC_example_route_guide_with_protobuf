@@ -60,6 +60,9 @@ class RouteGuideService extends RouteGuideServiceBase {
   @override
   Future<RouteSummary> recordRoute(
       grpc.ServiceCall call, Stream<Point> request) async {
+
+    print("Record route called");
+
     int pointCount = 0;
     int featureCount = 0;
     double distance = 0.0;
@@ -73,6 +76,8 @@ class RouteGuideService extends RouteGuideServiceBase {
       pointCount++;
       final feature = featuresDb.firstWhere((f) => f.location == location,
           orElse: () => null);
+
+      print('got feature by location request: ${feature.name}');
 
       if (feature != null) {
         featureCount++;

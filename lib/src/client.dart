@@ -12,6 +12,7 @@ class Client {
   RouteGuideClient stub;
 
   Future<void> main(List<String> args) async {
+    //
     channel = ClientChannel('127.0.0.1',
         port: 8065,
         options: const ChannelOptions(
@@ -19,13 +20,18 @@ class Client {
         ));
 
     stub = RouteGuideClient(channel,
-    options: CallOptions(timeout: Duration(seconds: 30)));
+        options: CallOptions(timeout: Duration(seconds: 30)));
 
     try {
-      print('Running getFeture on the server');
-      await runGetFeature();
-      print("Running listFeatures server stream");
-      await runListFeatures();
+//      print('Running getFeture on the server');
+//      await runGetFeature();
+//      print("Running listFeatures server stream");
+//      await runListFeatures();
+
+    print('Streaming the route......');
+
+    await runRecordRoute();
+
     } catch (exception) {
       print('Caught error: $exception');
     }
@@ -67,8 +73,29 @@ class Client {
 
     print('Looking for features between 40, -75 and 42, -73');
 
-    await for(var feature in stub.listFeatures(rect)) {
+    await for (var feature in stub.listFeatures(rect)) {
       printFeature(feature);
     }
+  }
+
+  Future<void> runRecordRoute() async {
+    Stream<Point> generateRoute(int count) async* {
+      final rnd = Random();
+      for (int i = 0; i < count; i++) {
+        final point = featuresDb[rnd.nextInt(featuresDb.length)].location;
+        print(
+            'Visiting point ${point.longitude / coordFactor}, ${point.longitude / coordFactor}');
+
+        yield point;
+        await Future.delayed(Duration(milliseconds: 200 + rnd.nextInt(200)));
+      }
+    }
+
+    final summary = await stub.recordRoute(generateRoute(10));
+
+    print('Finished trip with ${summary.pointCount} points');
+    print('Passed ${summary.featureCount} features');
+    print('Travelled ${summary.distance} meters');
+    print('It took ${summary.elapsedTime} seconds');
   }
 }

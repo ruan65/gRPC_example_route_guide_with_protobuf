@@ -110,6 +110,8 @@ class RouteGuideService extends RouteGuideServiceBase {
         yield note;
       }
       notes.add(note);
+
+      print('server notes: ${routeNotes.toString()}');
     }
   }
 }

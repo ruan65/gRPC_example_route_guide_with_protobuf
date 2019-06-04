@@ -28,10 +28,13 @@ class Client {
 //      print("Running listFeatures server stream");
 //      await runListFeatures();
 
-    print('Streaming the route......');
+//      print('Streaming the route......');
+//
+//      await runRecordRoute();
 
-    await runRecordRoute();
+      print('starting chat....');
 
+      await runRouteChat();
     } catch (exception) {
       print('Caught error: $exception');
     }
@@ -97,5 +100,42 @@ class Client {
     print('Passed ${summary.featureCount} features');
     print('Travelled ${summary.distance} meters');
     print('It took ${summary.elapsedTime} seconds');
+  }
+
+  Future<void> runRouteChat() async {
+    RouteNote createNote(String message, int lat, int lon) {
+      final location = Point()
+        ..latitude = lat
+        ..longitude = lon;
+
+      return RouteNote()
+        ..message = message
+        ..location = location;
+    }
+
+    final notes = <RouteNote>[
+      createNote('First message', 0, 0),
+      createNote('Second message', 0, 1),
+      createNote('Third message', 1, 0),
+      createNote('Fourth message', 0, 0),
+    ];
+
+    Stream<RouteNote> outgoingNotes() async* {
+      for (final note in notes) {
+        await Future.delayed(Duration(milliseconds: 10));
+
+        print('Sending message ${note.message} at ${note.location.latitude} '
+            '${note.location.longitude}');
+
+        yield note;
+      }
+    }
+
+    final call = stub.routeChat(outgoingNotes());
+
+    await for (var note in call) {
+      print('Got message ${note.message} at ${note.location.latitude}'
+          ', ${note.location.longitude}');
+    }
   }
 }

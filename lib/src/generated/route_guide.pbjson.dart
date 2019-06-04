@@ -38,3 +38,11 @@ const RouteSummary$json = const {
   ],
 };
 
+const RouteNote$json = const {
+  '1': 'RouteNote',
+  '2': const [
+    const {'1': 'location', '3': 1, '4': 1, '5': 11, '6': '.routeguide.Point', '10': 'location'},
+    const {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+  ],
+};
+

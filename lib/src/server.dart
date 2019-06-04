@@ -9,6 +9,10 @@ import 'generated/route_guide.pb.dart';
 import 'generated/route_guide.pbgrpc.dart';
 
 class RouteGuideService extends RouteGuideServiceBase {
+
+  //
+  final routeNotes = <Point, List<RouteNote>>{};
+
   @override
   Future<Feature> getFeature(grpc.ServiceCall call, Point request) async {
     print('Got point request: ${request.toString()}');
@@ -95,6 +99,18 @@ class RouteGuideService extends RouteGuideServiceBase {
       ..featureCount = featureCount
       ..distance = distance.round()
       ..elapsedTime = timer.elapsed.inSeconds;
+  }
+
+  @override
+  Stream<RouteNote> routeChat(grpc.ServiceCall call, Stream<RouteNote> request) async* {
+
+    await for (var note in request) {
+      final notes = routeNotes.putIfAbsent(note.location, () => <RouteNote>[]);
+      for (var note in notes) {
+        yield note;
+      }
+      notes.add(note);
+    }
   }
 }
 

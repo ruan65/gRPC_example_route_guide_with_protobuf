@@ -140,3 +140,33 @@ class RouteSummary extends $pb.GeneratedMessage {
   void clearElapsedTime() => clearField(4);
 }
 
+class RouteNote extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('RouteNote', package: const $pb.PackageName('routeguide'))
+    ..a<Point>(1, 'location', $pb.PbFieldType.OM, Point.getDefault, Point.create)
+    ..aOS(2, 'message')
+    ..hasRequiredFields = false
+  ;
+
+  RouteNote() : super();
+  RouteNote.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
+  RouteNote.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
+  RouteNote clone() => RouteNote()..mergeFromMessage(this);
+  RouteNote copyWith(void Function(RouteNote) updates) => super.copyWith((message) => updates(message as RouteNote));
+  $pb.BuilderInfo get info_ => _i;
+  static RouteNote create() => RouteNote();
+  RouteNote createEmptyInstance() => create();
+  static $pb.PbList<RouteNote> createRepeated() => $pb.PbList<RouteNote>();
+  static RouteNote getDefault() => _defaultInstance ??= create()..freeze();
+  static RouteNote _defaultInstance;
+
+  Point get location => $_getN(0);
+  set location(Point v) { setField(1, v); }
+  $core.bool hasLocation() => $_has(0);
+  void clearLocation() => clearField(1);
+
+  $core.String get message => $_getS(1, '');
+  set message($core.String v) { $_setString(1, v); }
+  $core.bool hasMessage() => $_has(1);
+  void clearMessage() => clearField(2);
+}
+
